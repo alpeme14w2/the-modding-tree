@@ -61,8 +61,8 @@ addLayer("rng", {
     }},
     color: "#f4fb68",
     requires: new Decimal("F6767676767"), // Can be a function that takes requirement increases into account
-    resource: "lore", // Name of prestige currency
-    baseResource: "RNG", // Name of resource prestige is based on
+    resource: "RNG", // Name of prestige currency
+    baseResource: "points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "none", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.5, // Prestige currency exponent
@@ -74,7 +74,12 @@ addLayer("rng", {
         return new Decimal(1)
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
-    layerShown(){return true}
+    layerShown(){return true},
+    clickables: {
+        11: {
+            display() {return "Blah"},
+        }
+    }
 })
 
 
