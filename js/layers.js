@@ -99,12 +99,55 @@ addLayer("rng", {
     row: 0, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true},
     clickables: {
-        131: {
+        11: {
             canClick() {return true},
             onClick() {
                 return massroll2(65536,toNumber(player.rng.points))
             },
+            display() {return toNumber(player.rng.points)},
         }
+    },
+    milestones: {
+        1: {
+            requirementDescription: "1000000 RNG",
+            effectDescription: "llama",
+            done() { return player.rng.points.gte(10**6) }
+        },
+        2: {
+            requirementDescription: "Insane Roll",
+            effectDescription: "1e9 RNG",
+            done() { return player.rng.points.gte(10**9) }
+        },
+        3: {
+            requirementDescription: "Insurmountable Roll",
+            effectDescription: "1e10 RNG",
+            done() { return player.rng.points.gte(10**10) }
+        },
+        4: {
+            requirementDescription: "Inconceivable Roll",
+            effectDescription: "1e11 RNG",
+            done() { return player.rng.points.gte(10**11) }
+        },
+        5: {
+            requirementDescription: "Infinite Roll",
+            effectDescription: "1e12 RNG",
+            done() { return player.rng.points.gte(10**12) }
+        },
+        6: {
+            requirementDescription: "Indescalae Roll",
+            effectDescription: "1e13 RNG",
+            done() { return player.rng.points.gte(10**13) }
+        },
+        7: {
+            requirementDescription: "In[%%CALL OF THE VOID%%] Roll",
+            effectDescription: "1e14 RNG",
+            done() { return player.rng.points.gte(10**14) }
+        },
+        8: {
+            requirementDescription: "In[...EPILOGUE...] Roll",
+            effectDescription: "1e15 RNG",
+            done() { return player.rng.points.gte(10**15) }
+        },
     }
 })
 
