@@ -102,7 +102,7 @@ addLayer("rng", {
         11: {
             canClick() {return true},
             onClick() {
-                return massroll2(65536,toNumber(player.rng.points))
+                return massroll2(65536,Math.max(toNumber(player.rng.points),1e9))
             },
             display() {return toNumber(player.rng.points)},
         }
@@ -115,7 +115,7 @@ addLayer("rng", {
         },
         2: {
             requirementDescription: "Insane Roll",
-            effectDescription: "1e9 RNG",
+            effectDescription: "1e9 RNG, massrolling capped at this",
             done() { return player.rng.points.gte(10**9) }
         },
         3: {
