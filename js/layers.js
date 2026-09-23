@@ -50,6 +50,29 @@ addLayer("diary", {
     layerShown(){return true}
 })
 
+function roll(x) {
+    let recursion = 0
+    let rng = 1/Math.random()
+    while (rng > x) {
+        rng = 1/Math.random()
+        recursion = recursion + 1
+    }
+    return rng * (x**recursion)
+}
+
+function massroll(x,best) {
+    let rngroll = roll(x)
+    while (rngroll < best) {
+        rngroll = roll(x)
+    }
+    return rngroll
+}
+
+function massroll2(x,best) {
+    let newrngamt = massroll(x,best)
+    player.rng.points = new Decimal(newrngamt)
+    return newrngamt
+}
 
 addLayer("rng", {
     name: "rng", // This is optional, only used in a few places, If absent it just uses the layer id.
@@ -76,8 +99,12 @@ addLayer("rng", {
     row: 0, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true},
     clickables: {
-        11: {
-            display() {return "Blah"},
+        131: {
+            canClick() {return true},
+            onClick() {
+                
+                return massroll2(65536,toNumber(player.rng.points))
+            },
         }
     }
 })
