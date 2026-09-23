@@ -102,7 +102,6 @@ addLayer("rng", {
         131: {
             canClick() {return true},
             onClick() {
-                
                 return massroll2(65536,toNumber(player.rng.points))
             },
         }
