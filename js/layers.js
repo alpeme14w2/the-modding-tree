@@ -102,7 +102,7 @@ addLayer("rng", {
         11: {
             canClick() {return true},
             onClick() {
-                return Math.max(massroll2(65536,Math.max(toNumber(player.rng.points),1e9)),toNumber(player.rng.points))
+                return massroll2(65536,Math.min(toNumber(player.rng.points),1e9))
             },
             display() {return toNumber(player.rng.points)},
         }
