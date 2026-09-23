@@ -70,7 +70,7 @@ function massroll(x,best) {
 
 function massroll2(x,best) {
     let newrngamt = massroll(x,best)
-    player.rng.points = new Decimal(newrngamt)
+    player.rng.points = new Decimal(Math.max(player.rng.points,newrngamt))
     return newrngamt
 }
 
