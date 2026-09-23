@@ -11,7 +11,7 @@ addLayer("rpg", {
     resource: "power", // Name of prestige currency
     baseResource: "points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
-    type: "none", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.4, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
@@ -102,7 +102,7 @@ addLayer("rng", {
         11: {
             canClick() {return true},
             onClick() {
-                return massroll2(65536,Math.min(toNumber(player.rng.points),1e9))
+                return massroll2(65536,toNumber(player.rng.points))
             },
             display() {return toNumber(player.rng.points)},
         }
@@ -115,7 +115,7 @@ addLayer("rng", {
         },
         2: {
             requirementDescription: "Insane Roll",
-            effectDescription: "1e9 RNG, massrolling capped at this",
+            effectDescription: "1e9 RNG",
             done() { return player.rng.points.gte(10**9) }
         },
         3: {
